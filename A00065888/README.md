@@ -28,13 +28,13 @@ El comando para el cual deseo conocer las llamdas al sistema es 'chmod'
 ![][2]
 
   
-*  write(int fd, const void buf, size_t count): el comando write, escribe hasta el contador de bytes desde el buffer *buf* hasta el contador señalado por *count*; caso de éxito, se devuelve el número de bytes escritos (cero indica que nada fue escrito). En este caso el retorno es 7 bytes. El sistema emplea este llamado en chmod para modificar de forma escrita los permisos del archivo.
+*  write(int fd, const void buf, size_t count): el comando write, escribe hasta el contador de bytes desde el buffer *buf* hasta el contador señalado por *count*; caso de éxito, se devuelve el número de bytes escritos (cero indica que nada fue escrito). En este caso el retorno es 7 bytes. El sistema emplea este llamado en chmod para modificar posteriormente de forma escrita los permisos del archivo.
 ![][3]  
 
-* open(const char pathname, int flags): dado el nombre de la ruta, open retorna un descriptor de archivo asociado a un integer pequeño no negativo para estas otras llamadas ( Un descriptor de archivo es una referencia a una descripción de archivo abierta; esta referencia no se ve afectada si la ruta de acceso se elimina o modifica para referirse a un archivo distinto). Una llamada a open () crea una nueva descripción de archivo, una entrada en la tabla de archivos abiertos de todo el sistema. La descripción del archivo abierto registra el desplazamiento del archivo y los indicadores de estado del archivo.
+* open(const char pathname, int flags): dado el nombre de la ruta, open retorna un descriptor de archivo asociado a un integer pequeño no negativo para estas otras llamadas ( Un descriptor de archivo es una referencia a una descripción de archivo abierta; esta referencia no se ve afectada si la ruta de acceso se elimina o modifica para referirse a un archivo distinto). Una llamada a open () crea una nueva descripción de archivo, una entrada en la tabla de archivos abiertos de todo el sistema. La descripción del archivo abierto registra el desplazamiento del archivo y los indicadores de estado del archivo. El sistema emplea este llamado para obtener una forma de abrir el archivo evitando conflictos de ruta de archivo.
 ![][4]  
 
-* mprotect(void addr, size_t len, int prot):
+* mprotect(void addr, size_t len, int prot): cambia las protecciones de acceso para las páginas de memoria del proceso de llamada que contienen cualquier parte del rango de direcciones en el intervalo [addr, addr + len-1].  *prot* es una combinación de banderas de acceso. Aqui es donde, por medio de esta llamada al sistema, se logra cambiar los permisos del archivo
 ![][5]
 
 
