@@ -40,15 +40,16 @@ El comando para el cual deseo conocer las llamdas al sistema es 'chmod'
 
 2. Realice la compilación del código fuente adjunto y su ejecución empleando el aplicativo **strace**. Identifique las llamadas al sistema encargadas de enviar y recibir datos a través de la red. A partir de los manuales de Linux en Internet o del sistema operativo explique las llamadas al sistema encontradas y sus parámetros. 
 
-* Descargamos las librerias según la nota al pie del documento y ejecutamos el programa. Mediante el comando strace -c ./curl obtenemos las siguientes llamas al sistema 
+ Descargamos las librerias según la nota al pie del documento y ejecutamos el programa. Mediante el comando strace -c ./curl obtenemos las siguientes llamas al sistema 
 ![][6]
 ![][7]
- las llamadas al sistema encargadas de enviar y recibir datos en la red son *sendto* and *recvfrom*
- | Syscall | Parámetros | Descripción | 
-|---|---|---|
-| recvfrom | **int sockfd** descriptor de archivo, **void buf** mensaje ,**size_t len** tamaño del mensaje, **int flags** tipo de mensaje, **struct sockaddr src_addr, socklen_t addrlen** direccion de origen y tamaño de la misma; | recive el mensaje proveniente de otro socket |
-| sendto | **int sockfd** descriptor de archivo,  **const void buff** mensaje, **size_t len** tamaño del mensaje, **int flags** tipo de mensaje, **const struct sockaddr dest_addr ,socklen_t addrlen** direccion de destino y tamaño de la misma | transmite un mensaje a otro socket |
+ las llamadas al sistema encargadas de enviar y recibir datos en la red son *sendto* and *recvfrom*  
 
+| Syscall | Parámetros | Descripción |  
+|---|---|---|  
+| recvfrom | **int sockfd** descriptor de archivo, **void buf** mensaje ,**size_t len** tamaño del mensaje, **int flags** tipo de mensaje, **struct sockaddr src_addr, socklen_t addrlen** direccion de origen y tamaño de la misma; | recive el mensaje proveniente de otro socket |  
+| sendto | **int sockfd** descriptor de archivo,  **const void buff** mensaje, **size_t len** tamaño del mensaje, **int flags** tipo de mensaje, **const struct sockaddr dest_addr ,socklen_t addrlen** direccion de destino y tamaño de la misma | transmite un mensaje a otro socket |
+  
 **Nota:** Cuando compile programas tenga en cuenta que estos pueden necesitar la instalación de librerías para su compilación y ejecución.
 
 **Debian**
